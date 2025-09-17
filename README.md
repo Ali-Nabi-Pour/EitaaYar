@@ -21,8 +21,6 @@ A comprehensive Python client library for EitaaYar.ir API
 ## 🚀 نصب سریع | Quick Install
 
 ```bash
-# Install from PyPI
-pip install eitaayar
 
 # Or install from source
 git clone https://github.com/Ali-Nabi-Pour/Eitaayar.git
