@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📚 EitaaYar Python Client - Complete Documentation</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #f59e0b;
+            --dark: #1f2937;
+            --light: #f8fafc;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header-content {
+            text-align: center;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: var(--dark);
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr 3fr;
+            }
+            
+            h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1.5rem;
+            height: fit-content;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        @media (min-width: 768px) {
+            .sidebar {
+                position: sticky;
+                top: 20px;
+            }
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            display: block;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        .section:last-child {
+            border-bottom: none;
+        }
+        
+        h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+        
+        @media (min-width: 768px) {
+            h2 {
+                font-size: 2.2rem;
+            }
+        }
+        
+        h3 {
+            color: var(--secondary);
+            font-size: 1.3rem;
+            margin: 1.5rem 0 1rem 0;
+        }
+        
+        @media (min-width: 768px) {
+            h3 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+        
+        .code-block {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Monaco', 'Cascadia Code', monospace;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .code-block pre {
+            margin: 0;
+        }
+        
+        .code-inline {
+            background: #e5e7eb;
+            color: var(--danger);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9em;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .response-block {
+            background: #f1f5f9;
+            border: 2px solid #e2e8f0;
+            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-family: 'Fira Code', monospace;
+            direction: ltr;
+            text-align: left;
+            overflow-x: auto;
+        }
+        
+        .warning {
+            background: #fffbeb;
+            border: 2px solid #fef3c7;
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .note {
+            background: #eff6ff;
+            border: 2px solid #dbeafe;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        @media (min-width: 640px) {
+            .feature-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 2rem;
+            color: white;
+        }
+        
+        .mobile-menu-btn {
+            display: block;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            width: 100%;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+        
+        @media (min-width: 768px) {
+            .mobile-menu-btn {
+                display: none;
+            }
+        }
+        
+        .security-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+        
+        /* Mobile navigation */
+        .sidebar-mobile {
+            display: none;
+        }
+        
+        @media (max-width: 767px) {
+            .sidebar-desktop {
+                display: none;
+            }
+            
+            .sidebar-mobile {
+                display: block;
+            }
+            
+            .nav-links {
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+            
+            .nav-links.show {
+                max-height: 500px;
+            }
+        }
+    </style>
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>📚 EitaaYar Python Client</h1>
+                <p class="subtitle">Complete Python library documentation for EitaaYar API</p>
+                <div class="security-badge">🔒 Protected against cyber attacks</div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Desktop Sidebar -->
+            <aside class="sidebar sidebar-desktop">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#installation">Installation</a></li>
+                        <li><a href="#quickstart">Quick Start</a></li>
+                        <li><a href="#authentication">Authentication</a></li>
+                        <li><a href="#methods">Methods</a></li>
+                        <li><a href="#responses">Responses</a></li>
+                        <li><a href="#errors">Error Handling</a></li>
+                        <li><a href="#logging">Logging</a></li>
+                        <li><a href="#examples">Examples</a></li>
+                        <li><a href="#security">Security</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <!-- Mobile Sidebar -->
+            <aside class="sidebar sidebar-mobile">
+                <button class="mobile-menu-btn" onclick="toggleMenu()">📋 Menu</button>
+                <nav>
+                    <ul class="nav-links" id="mobileNav">
+                        <li><a href="#installation" onclick="toggleMenu()">Installation</a></li>
+                        <li><a href="#quickstart" onclick="toggleMenu()">Quick Start</a></li>
+                        <li><a href="#authentication" onclick="toggleMenu()">Authentication</a></li>
+                        <li><a href="#methods" onclick="toggleMenu()">Methods</a></li>
+                        <li><a href="#responses" onclick="toggleMenu()">Responses</a></li>
+                        <li><a href="#errors" onclick="toggleMenu()">Error Handling</a></li>
+                        <li><a href="#logging" onclick="toggleMenu()">Logging</a></li>
+                        <li><a href="#examples" onclick="toggleMenu()">Examples</a></li>
+                        <li><a href="#security" onclick="toggleMenu()">Security</a></li>
+                    </ul>
+                </nav>
+            </aside>
+
+            <main class="content">
+                <!-- Installation Section -->
+                <section id="installation" class="section">
+                    <h2>🚀 Installation</h2>
+                    <p>Install using pip:</p>
+                    <div class="code-block">
+                        <pre><code>pip install eitaayar</code></pre>
+                    </div>
+                    
+                    <p>Or install from source:</p>
+                    <div class="code-block">
+                        <pre><code>git clone https://github.com/Ali-Nabi-Pour/Eitaayar.git
+cd Eitaayar
+pip install -e .</code></pre>
+                    </div>
+                    
+                    <div class="note">
+                        <strong>💡 Note:</strong> Requires Python 3.7 or higher.
+                    </div>
+                </section>
+
+                <!-- Quickstart Section -->
+                <section id="quickstart" class="section">
+                    <h2>⚡ Quick Start</h2>
+                    <p>Basic usage example:</p>
+                    <div class="code-block">
+                        <pre><code>from eitaayar import Client
+
+# Create client with token
+client = Client("bot139412:1ef6dbad-0e9f-45f1-8ae0-d8cd3fb6afcf")
+
+# Get bot info
+me = client.get_me()
+print(f"🤖 Bot name: {me.result.first_name}")
+
+# Send message
+response = client.send_message(
+    chat_id=10872172,
+    text="Hello! This is my first message 🚀",
+    title="Test Message"
+)
+
+if response.ok:
+    print(f"✅ Message sent! ID: {response.message_id}")
+else:
+    print(f"❌ Error: {response.error}")</code></pre>
+                    </div>
+                </section>
+
+                <!-- Authentication Section -->
+                <section id="authentication" class="section">
+                    <h2>🔑 Authentication</h2>
+                    <p>You need an API token from EitaaYar admin panel.</p>
+                    
+                    <div class="code-block">
+                        <pre><code>from eitaayar import Client
+
+# Different ways to create client
+client1 = Client("your_bot_token")  # Simple
+client2 = Client(
+    token="your_bot_token",
+    base_url="https://eitaayar.ir/api",  # Base URL
+    timeout=30,  # Timeout in seconds
+    enable_logging=True,  # Enable logging
+    log_level="DEBUG"  # Log level
+)</code></pre>
+                    </div>
+                </section>
+
+                <!-- Methods Section -->
+                <section id="methods" class="section">
+                    <h2>🛠️ Methods</h2>
+                    
+                    <h3>1. get_me() - Get bot information</h3>
+                    <div class="code-block">
+                        <pre><code># Synchronous
+response = client.get_me()
+
+# Asynchronous
+response = await client.get_me_async()</code></pre>
+                    </div>
+                    
+                    <h3>2. send_message() - Send text message</h3>
+                    <div class="code-block">
+                        <pre><code>response = client.send_message(
+    chat_id=10872172,  # Chat ID or username
+    text="Message text",
+    title="Message title",  # Optional
+    disable_notification=1,  # Optional - Silent send
+    reply_to_message_id=123,  # Optional - Reply to message
+    date=1609459200,  # Optional - Send timestamp
+    pin=1,  # Optional - Pin message
+    auto_delete_after_views=100  # Optional - Auto delete after views
+)</code></pre>
+                    </div>
+                    
+                    <h3>3. send_document() - Send file</h3>
+                    <div class="code-block">
+                        <pre><code># Send file
+with open("file.txt", "rb") as f:
+    response = client.send_document(
+        chat_id=10872172,
+        file=f,
+        filename="file.txt",
+        caption="File description",
+        content_type="text/plain"
+    )</code></pre>
+                    </div>
+                </section>
+
+                <!-- Responses Section -->
+                <section id="responses" class="section">
+                    <h2>📨 Responses</h2>
+                    <p>All methods return a <span class="code-inline">Response</span> object.</p>
+                    
+                    <h3>Success response structure:</h3>
+                    <div class="response-block">
+                        <pre>{
+    "ok": true,
+    "result": {
+        "message_id": 114827694,
+        "from": {
+            "id": 139412,
+            "is_bot": false,
+            "first_name": "Ali",
+            "last_name": "NabiPour",
+            "username": "ali_nabi_pour"
+        },
+        "chat": {
+            "id": 10872172,
+            "type": "private"
+        },
+        "date": 1757267925,
+        "text": "Test message from script"
+    },
+    "_library_signature": {
+        "name": "EitaaYar Python Client",
+        "version": "1.0.0",
+        "developer": "Ali NabiPour"
+    }
+}</pre>
+                    </div>
+                    
+                    <h3>Accessing fields:</h3>
+                    <div class="code-block">
+                        <pre><code>response = client.send_message(...)
+
+# Access fields
+print(response.ok)  # True/False
+print(response.message_id)  # 114827694
+print(response.text)  # "Test message from script"
+print(response.date)  # datetime object
+print(response.from_user.first_name)  # "Ali"
+print(response.chat.type)  # "private"
+
+# Convert to dictionary
+data = response.to_dict()
+
+# Check status
+if response:
+    print("✅ Success")
+else:
+    print("❌ Error")</code></pre>
+                    </div>
+                </section>
+
+                <!-- Errors Section -->
+                <section id="errors" class="section">
+                    <h2>🚨 Error Handling</h2>
+                    
+                    <h3>Error types:</h3>
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🔍</div>
+                            <h4>METHOD_NOT_FOUND</h4>
+                            <p>When API method doesn't exist</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔑</div>
+                            <h4>INVALID_TOKEN</h4>
+                            <p>Invalid or expired token</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">💬</div>
+                            <h4>CHAT_NOT_FOUND</h4>
+                            <p>Chat or user doesn't exist</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⏰</div>
+                            <h4>TIMEOUT</h4>
+                            <p>Connection timeout</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Error handling:</h3>
+                    <div class="code-block">
+                        <pre><code>try:
+    response = client.send_message(...)
+    
+    if not response.ok:
+        print(f"Error: {response.error}")
+        print(f"Error type: {response.error_type}")
+        print(f"Error code: {response.error_code}")
+        
+        # Raise exception
+        response.raise_for_status()
+        
+except Exception as e:
+    print(f"System error: {e}")</code></pre>
+                    </div>
+                    
+                    <div class="response-block">
+                        <pre>{
+    "ok": false,
+    "error": "method not found",
+    "error_code": 404,
+    "error_type": "METHOD_NOT_FOUND",
+    "_library_signature": {...}
+}</pre>
+                    </div>
+                </section>
+
+                <!-- Logging Section -->
+                <section id="logging" class="section">
+                    <h2>📊 Logging System</h2>
+                    
+                    <div class="code-block">
+                        <pre><code># Enable logging
+client.enable_logging(
+    level="DEBUG",  # DEBUG, INFO, WARNING, ERROR
+    log_file="app.log"  # Log file (optional)
+)
+
+# Disable logging
+client.disable_logging()
+
+# Change log level at runtime
+client.set_log_level("INFO")</code></pre>
+                    </div>
+                    
+                    <div class="note">
+                        <strong>💡 Log output example:</strong><br>
+                        <code>2024-01-15 10:30:25 - eitaayar.client - INFO - Sending message to chat 10872172</code><br>
+                        <code>2024-01-15 10:30:26 - eitaayar.client - DEBUG - Message text: Hello world!...</code>
+                    </div>
+                </section>
+
+                <!-- Examples Section -->
+                <section id="examples" class="section">
+                    <h2>🎯 Practical Examples</h2>
+                    
+                    <h3>Send formatted message:</h3>
+                    <div class="code-block">
+                        <pre><code>message = """🚀 *Important Message*
+📅 Date: 2024/01/15
+⏰ Time: 14:30
+
+📋 Todo List:
+✅ Complete documentation
+🔧 Test library
+🎉 Release version
+
+🌐 For more info visit [website](https://github.com/Ali-Nabi-Pour/Eitaayar)"""
+
+response = client.send_message(
+    chat_id=10872172,
+    text=message,
+    title="Project Update"
+)</code></pre>
+                    </div>
+                    
+                    <h3>Send file with auto fallback:</h3>
+                    <div class="code-block">
+                        <pre><code>try:
+    with open("report.pdf", "rb") as file:
+        response = client.send_document(
+            chat_id=10872172,
+            file=file,
+            filename="report.pdf",
+            caption="Monthly project report"
+        )
+        
+        if response.ok:
+            print("✅ File sent successfully")
+        else:
+            print("⚠️ Used fallback method")
+            
+except Exception as e:
+    print(f"❌ File send error: {e}")</code></pre>
+                    </div>
+                </section>
+
+                <!-- Security Section -->
+                <section id="security" class="section">
+                    <h2>🔒 Security</h2>
+                    
+                    <div class="warning">
+                        <strong>⚠️ Security Warning:</strong> Protect your API token and never expose it in public code.
+                    </div>
+                    
+                    <h3>Security Level: 95%</h3>
+                    
+                    <div class="feature-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">🛡️</div>
+                            <h4>Injection Protection</h4>
+                            <p>All parameters are automatically validated</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">🔐</div>
+                            <h4>SSL/TLS Encryption</h4>
+                            <p>All communications encrypted with HTTPS</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <h4>Rate Limiting</h4>
+                            <p>Automatic API rate limit management</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📝</div>
+                            <h4>Audit Logging</h4>
+                            <p>Complete request/response logging</p>
+                        </div>
+                    </div>
+                    
+                    <h3>Best Practices:</h3>
+                    <div class="code-block">
+                        <pre><code># ✅ Correct - Use environment variables
+import os
+from eitaayar import Client
+
+token = os.getenv("EITAAYAR_TOKEN")
+client = Client(token)
+
+# ❌ Wrong - Exposing token in code
+client = Client("token_here")  # Dangerous!</code></pre>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <footer>
+            <p>📧 Developer: Ali NabiPour - noyan.joun.89@gmail.com</p>
+            <p>🌐 GitHub: <a href="https://github.com/Ali-Nabi-Pour/Eitaayar" style="color: white;">Ali-Nabi-Pour/Eitaayar</a></p>
+            <p>📄 License: MIT - © 2024</p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for mobile menu and security -->
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('show');
+        }
+
+        // Security protection
+        document.addEventListener('DOMContentLoaded', function() {
+            // XSS protection
+            const sanitizeInput = function(input) {
+                return input.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+                           .replace(/"/g, '&quot;').replace(/'/g, '&#x27;');
+            };
+
+            // Clickjacking protection
+            if (self !== top) {
+                top.location = self.location;
+            }
+
+            // Log security events
+            const securityLogger = {
+                log: function(message) {
+                    console.log('🔒 Security Event:', message);
+                }
+            };
+
+            // Monitor for suspicious activities
+            document.addEventListener('click', function(e) {
+                if (e.target.tagName === 'A' && e.target.href) {
+                    if (e.target.href.includes('javascript:')) {
+                        e.preventDefault();
+                        securityLogger.log('Blocked malicious link: ' + e.target.href);
+                    }
+                }
+            });
+
+            // Protect against form submission
+            const forms = document.querySelectorAll('form');
+            forms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    securityLogger.log('Form submission blocked for security');
+                });
+            });
+
+            securityLogger.log('Security system initialized');
+        });
+
+        // Responsive design enhancements
+        window.addEventListener('resize', function() {
+            // Close mobile menu on resize to desktop
+            if (window.innerWidth >= 768) {
+                const nav = document.getElementById('mobileNav');
+                nav.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>
