@@ -8,7 +8,7 @@ with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
 setup(
-    name="eitaayar",
+    name="EitaaYar",
     version="1.0",
     author="Ali NabiPour",
     author_email="noyan.joun.89@gmail.com",
