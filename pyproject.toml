@@ -38,7 +38,7 @@ Bug_Reports = "https://github.com/Ali-Nabi-Pour/Eitaayar/issues"
 Source = "https://github.com/Ali-Nabi-Pour/Eitaayar"
 
 [tool.setuptools]
-packages = ["EitaaYar"]
+packages = ["eitaayar"]
 
 [tool.setuptools.package-dir]
-eitaayar = "EitaaYar"
+eitaayar = "eitaayar"
